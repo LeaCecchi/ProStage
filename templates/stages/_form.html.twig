@@ -1,0 +1,27 @@
+{{form_start(form)}}
+
+<b>{{form_label(form.intitule)}}</b>
+{{form_widget(form.intitule)}}
+<br>
+<b>{{form_label(form.missions)}}</b>
+{{form_widget(form.missions)}}
+<br>
+<b>{{form_label(form.contact)}}</b>
+{{form_widget(form.contact)}}
+<br>
+<b>{{ form_label(form.entreprise) }}</b>
+{{ form_widget(form.entreprise) }}
+
+<p><b>Le stage est proposé aux formations suivantes :</b></p>
+{{ form_row(form.formations) }}
+
+
+
+<div class="" style ="text-align:center">
+
+    <button class="d-none d-sm-inline-block btn btn-sm btn-dark shadow-sm">{{ button_label|default("Créer le stage") }}</button>
+
+</div>
+<br>
+
+{{form_end(form)}}
