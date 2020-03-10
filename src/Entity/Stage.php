@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -20,26 +21,29 @@ class Stage
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(max=255)
      */
     private $intitule;
 
     /**
      * @ORM\Column(type="string", length=1000)
+     * @Assert\Length(max=1000)
      */
     private $missions;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Email
      */
     private $contact;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Formation", inversedBy="stages")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Formation", inversedBy="stages",  cascade={"persist"})
      */
     private $formations;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Entreprise", inversedBy="stages")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Entreprise", inversedBy="stages", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $entreprise;

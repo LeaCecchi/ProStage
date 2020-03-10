@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use App\Form\EntrepriseType;
+use App\Form\StageType;
 use App\Entity\Stage;
 use App\Entity\Entreprise;
 use App\Entity\Formation;
@@ -37,6 +38,31 @@ class ProStagesController extends AbstractController
         }
 
         return $this->render('entreprises/new.html.twig', [
+            "form" => $form->createView()
+        ]);
+    }
+
+    /**
+     * @Route("/stage/new", name="stage_new")
+     */
+    public function addStage(Request $request) {
+        $stage = new Stage();
+
+        $form =$this->createForm(StageType::class, $stage);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $this->getDoctrine()->getManager()->persist($stage);
+
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute("home");
+
+        }
+
+        return $this->render('stages/new.html.twig', [
             "form" => $form->createView()
         ]);
     }
