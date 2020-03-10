@@ -7,6 +7,7 @@ use Doctrine\Common\Persistence\ObjectManager;
 use App\Entity\Entreprise;
 use App\Entity\Formation;
 use App\Entity\Stage;
+use App\Entity\Utilisateur;
 
 class AppFixtures extends Fixture
 {
@@ -35,6 +36,25 @@ class AppFixtures extends Fixture
         $LP->setNomCourt("LP Prog Avancée ");
         $LP->setNomLong("Licence Professionnelle Programmation Avancée");
         $manager->persist($LP);
+
+        /////////////////////////////////
+        /////UTILISATEURS APPLICATION////
+        /////////////////////////////////
+        $lea = new Utilisateur();
+        $lea->setPrenom('Lea');
+        $lea->setNom('Cecchi');
+        $lea->setEmail('lcecchi@gmail.fr');
+        $lea->setRoles(['ROLE_USER', 'ROLE_ADMIN']);
+        $lea->setPassword('$2y$10$doylcQZEjF4Aczb9wYKZVuxNuN9oASYN/QEAhbR00RW/t8aIF2E/C');
+        $manager->persist($lea);
+
+        $arthur = new Utilisateur();
+        $arthur->setPrenom('Arthur');
+        $arthur->setNom('LeBeau');
+        $arthur->setEmail('tutur@gmail.fr');
+        $arthur->setRoles(['ROLE_USER']);
+        $arthur->setPassword('$2y$10$8R1Z5Ic5D2lfLhYNTmzYru.73ndG5DE6MZcci9WeYXZKs2G6ogbEi');
+        $manager->persist($arthur);
 
 
         for ($i=0; $i <= $nbDonneesTest; $i++) {
