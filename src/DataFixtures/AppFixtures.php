@@ -40,20 +40,20 @@ class AppFixtures extends Fixture
         /////////////////////////////////
         /////UTILISATEURS APPLICATION////
         /////////////////////////////////
-        $lea = new Utilisateur();
-        $lea->setPrenom('Lea');
-        $lea->setNom('Cecchi');
-        $lea->setEmail('lcecchi@gmail.fr');
-        $lea->setRoles(['ROLE_USER', 'ROLE_ADMIN']);
-        $lea->setPassword('$2y$10$doylcQZEjF4Aczb9wYKZVuxNuN9oASYN/QEAhbR00RW/t8aIF2E/C');
-        $manager->persist($lea);
+        $benjamin = new Utilisateur();
+        $benjamin->setPrenom('Benjamin');
+        $benjamin->setNom('LeNul');
+        $benjamin->setEmail('benjo@gmail.fr');
+        $benjamin->setRoles(['ROLE_USER', 'ROLE_ADMIN']);
+        $benjamin->setPassword('$2y$10$1FN8FdO945Nt.8gwWjDz6.t/tr0IhJbZkms8ppdh/GC4h7vFKDFdq');
+        $manager->persist($benjamin);
 
         $arthur = new Utilisateur();
         $arthur->setPrenom('Arthur');
         $arthur->setNom('LeBeau');
         $arthur->setEmail('tutur@gmail.fr');
         $arthur->setRoles(['ROLE_USER']);
-        $arthur->setPassword('$2y$10$8R1Z5Ic5D2lfLhYNTmzYru.73ndG5DE6MZcci9WeYXZKs2G6ogbEi');
+        $arthur->setPassword('$2y$12$wdNy3EonDEuf7HWDXP.sdOekrrbhk5T1guabtU1NtRkTupMOExn1.');
         $manager->persist($arthur);
 
 
