@@ -1,0 +1,29 @@
+{{form_start(form)}}
+
+<table align="center" class="table">
+    <tr>
+        <th>{{form_label(form.nom)}}</th>
+        <td>{{form_widget(form.nom)}}</td>
+    </tr>
+    <tr>
+        <th>{{form_label(form.activite)}}</th>
+        <td>{{form_widget(form.activite)}}</td>
+    </tr>
+    <tr>
+        <th>{{form_label(form.adresse)}}</th>
+        <td>{{form_widget(form.adresse)}}</td>
+    </tr>
+    <tr>
+        <th>{{form_label(form.site)}}</th>
+        <td>{{form_widget(form.site)}}</td>
+    </tr>
+</table>
+
+<div class="" style ="text-align:center">
+
+    <button class="d-none d-sm-inline-block btn btn-sm btn-dark shadow-sm">Créer l'entreprise</button>
+
+</div>
+
+
+{{form_end(form)}}

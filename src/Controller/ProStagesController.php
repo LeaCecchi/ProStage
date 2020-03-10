@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Stage;
 use App\Entity\Entreprise;
 use App\Entity\Formation;
@@ -13,6 +15,66 @@ use App\Repository\StageRepository;
 
 class ProStagesController extends AbstractController
 {
+    /**
+     * @Route("/entreprises/new", name="entreprises_new")
+     */
+    public function AddNewEntreprise(Request $request)
+    {
+        $entreprise = new Entreprise();
+
+        $form = $this->createFormBuilder($entreprise)
+            ->add("nom")
+            ->add("activite")
+            ->add("adresse")
+            ->add("site", UrlType::class)
+            ->getForm();
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted()) {
+
+            $this->getDoctrine()->getManager()->persist($entreprise);
+
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute("home");
+
+        }
+
+        return $this->render('entreprises/new.html.twig', [
+            "form" => $form->createView()
+        ]);
+    }
+
+    /**
+     * @Route("/entreprises/{id}/edit", name="entreprises_edit")
+     */
+    public function EditEntreprise(Request $request, Entreprise $entreprise)
+    {
+
+        $form = $this->createFormBuilder($entreprise)
+            ->add("nom")
+            ->add("activite")
+            ->add("adresse")
+            ->add("site", UrlType::class)
+            ->getForm();
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted()) {
+
+            $this->getDoctrine()->getManager()->persist($entreprise);
+
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute("entreprises");
+
+        }
+
+        return $this->render('entreprises/edit.html.twig', [
+            "form" => $form->createView()
+        ]);
+    }
   /**
    * @Route("/", name="home")
    */
@@ -97,3 +159,5 @@ class ProStagesController extends AbstractController
     ]);
   }
 }
+
+

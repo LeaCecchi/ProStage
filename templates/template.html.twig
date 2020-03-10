@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>{% block title %}{% endblock %}</title>
+  <title>Prostage</title>
 
   {% block stylesheets %}
 
@@ -56,6 +56,10 @@
           <!-- Zone de tri -->
           <li><a href="{{path('choixTri',{type:'entreprises'})}}">Entreprises</a></li>
           <li><a href="{{path('choixTri',{type:'formations'})}}">Formations</a></li>
+        </ul>
+        <h3>Ajouter :</h3>
+        <ul>
+          <li><a href="{{path('entreprises_new')}}">Ajouter une entreprise</a></li>
         </ul>
       </div>
     </div>
