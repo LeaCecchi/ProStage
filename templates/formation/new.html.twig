@@ -1,11 +1,11 @@
-<!DOCTYPE html>
+{% extends 'template.html.twig' %}
 
-<title>New Formation</title>
+{% block header %}
+
+    Créer une formation
+
+{% endblock %}
 
 {% block body %}
-    <h1>Create new Formation</h1>
-
     {{ include('formation/_form.html.twig') }}
-
-    <a href="{{ path('formation_index') }}">back to list</a>
 {% endblock %}
