@@ -136,19 +136,6 @@ class ProStagesController extends AbstractController
   }
 
   /**
-   * @Route("/formations", name="formations")
-   */
-  public function FormationsIndex(FormationRepository $repo)
-  {
-
-    $formations = $repo->findAll();
-
-      return $this->render('formations/index.html.twig', [
-        "formations" => $formations
-      ]);
-  }
-
-  /**
    * @Route("/stages/{id}", name="stages")
    */
   public function StagesIndex(Stage $stage)

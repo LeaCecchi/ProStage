@@ -1,37 +1,28 @@
-<!DOCTYPE html>
+{% extends 'template.html.twig' %}
 
-<title>Formation index</title>
+{% block header %}
+
+    Liste des formations concernées par des stages
+
+{% endblock %}
 
 {% block body %}
-    <h1>Formation index</h1>
 
     <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>NomCourt</th>
-                <th>NomLong</th>
-                <th>actions</th>
-            </tr>
+        <thead class="thead-light">
+        <tr>
+            <th scope="col">Formations</th>
+            <th></th>
+        </tr>
         </thead>
         <tbody>
         {% for formation in formations %}
             <tr>
-                <td>{{ formation.id }}</td>
-                <td>{{ formation.nomCourt }}</td>
-                <td>{{ formation.nomLong }}</td>
-                <td>
-                    <a href="{{ path('formation_show', {'id': formation.id}) }}">show</a>
-                    <a href="{{ path('formation_edit', {'id': formation.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">no records found</td>
+                <td><a href="{{ path('formation_show', {'id' : formation.id}) }}">{{formation.nomLong}}</a> ({{formation.nomCourt}})</td>
+                <td><a href="{{ path('formation_edit', {'id' : formation.id}) }}">Modifier</a> </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('formation_new') }}">Create new</a>
 {% endblock %}
