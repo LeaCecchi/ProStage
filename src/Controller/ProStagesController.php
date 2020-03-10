@@ -31,7 +31,7 @@ class ProStagesController extends AbstractController
 
         $form->handleRequest($request);
 
-        if ($form->isSubmitted()) {
+        if ($form->isSubmitted() && $form->isValid()) {
 
             $this->getDoctrine()->getManager()->persist($entreprise);
 
