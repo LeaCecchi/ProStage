@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>{% block title %}{% endblock %}</title>
+
+  {% block stylesheets %}
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  {% endblock %}
+
+</head>
+
+<body>
+  <!-- Barre de navigation -->
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <a class="navbar-brand" href="{{path('home')}}">
+            <h1>Prostages</h1>
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="{{path('formations')}}">Formations</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{path('entreprises')}}">Entreprises</a>
+              </li>
+              <li class="nav-item">
+                <a text-align="right" class="btn btn-outline-light" href="/korok.jpg">*ding ding*</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <!-- Titre de la page-->
+        <br>
+        <h2>{% block header %}{% endblock %}</h2><br>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-9">
+        <!-- Contenu de la page-->
+        {% block body %}{% endblock %}
+      </div>
+      <div class="col-md-3">
+        <h3>Voir les stages par :</h3>
+        <ul>
+          <!-- Zone de tri -->
+          <li><a href="{{path('choixTri',{type:'entreprises'})}}">Entreprises</a></li>
+          <li><a href="{{path('choixTri',{type:'formations'})}}">Formations</a></li>
+        </ul>
+      </div>
+    </div>
+<!-- Bas de page -->
+    <div class="row">
+      <div class="col-md-12">
+        <div class="alert alert-secondary" role="alert">
+          Prostages - Projet symfony 2019/2020 | Site réalisé à l'aide de <a href="https://symfony.com" target="_blank">Symfony</a> et <a href="https://getbootstrap.com" target="_blank"> Boostrap</a> par Lea Cecchi
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  {% block javascripts %}
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  {% endblock %}
+
+</body>
+
+</html>

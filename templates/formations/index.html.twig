@@ -1,0 +1,28 @@
+{% extends 'template.html.twig' %}
+
+{% block title %}Liste des formations{% endblock %}
+
+{% block header %}
+
+Liste des formations concernées par des stages
+
+{% endblock %}
+
+{% block body %}
+
+<table class="table">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">Formations</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for formation in formations %}
+    <tr>
+      <td>{{formation.nomLong}} ({{formation.nomCourt}})</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}

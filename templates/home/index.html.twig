@@ -1,0 +1,35 @@
+{% extends 'template.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block header %}
+
+Liste des stages
+
+{% endblock %}
+
+{% block body %}
+
+<table class="table">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">Intitulé</th>
+      <th scope="col">Formation(s)</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for stage in stages %}
+    <tr>
+      <td><a href="{{path ('stages',{id:stage.id})}}">{{stage.intitule}} - {{stage.entreprise.nom}}</a></td>
+      <td>
+
+      {% for formation in stage.formations %}
+      {{formation.nomCourt}}{% if not loop.last %}, {# On met une virgule après le nom pour séparer les formations, si il ne s'agit pas de la derniere #}{% endif %}
+      {% endfor %}
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}

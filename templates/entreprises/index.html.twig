@@ -1,0 +1,29 @@
+{% extends 'template.html.twig' %}
+
+{% block title %}Liste des entreprises{% endblock %}
+
+{% block header %}
+
+Liste des entreprises proposant un stage
+
+{% endblock %}
+
+{% block body %}
+
+<table class="table">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">Entreprises</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    {% for entreprise in entreprises %}
+    <tr>
+      <td>{{entreprise.nom}}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}

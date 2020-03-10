@@ -1,0 +1,39 @@
+{% extends 'template.html.twig' %}
+
+{% block title %}Trier par {{type}}{% endblock %}
+
+{% block header %} Trier par {{type}}{% endblock %}
+
+{% block body %}
+
+{% if type == 'entreprises' %}
+  {% set titre = 'Entreprises' %}
+{% else %}
+  {% set titre = 'Formations' %}
+{% endif %}
+
+<table class="table">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">{{titre}}</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for element in tableau %}
+      {% if type == 'entreprises' %}
+      <tr>
+        <td><a href="{{path('sort', {type:'entreprises', nom:element.nom})}}">{{element.nom}}</a></td>
+      </tr>
+      {% endif %}
+      {% if type == 'formations' %}
+      <tr>
+        <td><a href="{{path('sort', {type:'formation', nom:element.nomCourt})}}">{{element.nomCourt}}</a></td>
+      </tr>
+      {% endif %}
+
+    {% endfor %}
+
+  </tbody>
+</table>
+
+{% endblock %}

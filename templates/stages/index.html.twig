@@ -1,0 +1,37 @@
+{% extends 'template.html.twig' %}
+
+{% block title %}Descriptif de stage{% endblock %}
+
+{% block header %}
+
+Détails du stage
+
+{% endblock %}
+
+{% block body %}
+
+<h4>Intitulé :</h4>
+<p>{{stage.getIntitule()}}</p>
+
+<h4>Entreprise :</h4>
+<p>{{stage.getEntreprise().getNom()}}</p>
+
+<h4>Missions :</h4>
+<p>{{stage.getMissions()}}</p>
+
+<h4>Formation(s) :</h4>
+<p>
+
+  {% for formation in stage.formations %}
+      {{formation.nomCourt}}
+      {% if not loop.last %}
+        , {# On met une virgule après le nom pour séparer les formations, si il ne s'agit pas de la derniere #}
+      {% endif %}
+  {% endfor %}
+
+</p>
+
+<h4>Contact :</h4>
+<p>{{stage.getContact()}}</p>
+
+{% endblock %}
