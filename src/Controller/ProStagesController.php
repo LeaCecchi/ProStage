@@ -3,9 +3,9 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
+use App\Form\EntrepriseType;
 use App\Entity\Stage;
 use App\Entity\Entreprise;
 use App\Entity\Formation;
@@ -22,12 +22,7 @@ class ProStagesController extends AbstractController
     {
         $entreprise = new Entreprise();
 
-        $form = $this->createFormBuilder($entreprise)
-            ->add("nom")
-            ->add("activite")
-            ->add("adresse")
-            ->add("site", UrlType::class)
-            ->getForm();
+        $form =$this->createForm(EntrepriseType::class, $entreprise);
 
         $form->handleRequest($request);
 
@@ -52,12 +47,7 @@ class ProStagesController extends AbstractController
     public function EditEntreprise(Request $request, Entreprise $entreprise)
     {
 
-        $form = $this->createFormBuilder($entreprise)
-            ->add("nom")
-            ->add("activite")
-            ->add("adresse")
-            ->add("site", UrlType::class)
-            ->getForm();
+        $form =$this->createForm(EntrepriseType::class, $entreprise);
 
         $form->handleRequest($request);
 
