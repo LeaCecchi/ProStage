@@ -12,6 +12,7 @@ Liste des entreprises proposant un stage
   <thead class="thead-light">
     <tr>
       <th scope="col">Entreprises</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -19,6 +20,7 @@ Liste des entreprises proposant un stage
     {% for entreprise in entreprises %}
     <tr>
       <td>{{entreprise.nom}}</td>
+      <td><a href='{{ path( "entreprises_edit", {id : entreprise.id } ) }}'>Modifier l'entreprise</a></td>
     </tr>
     {% endfor %}
   </tbody>
